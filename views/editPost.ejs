@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create Post</title>
+
+</head>
+<body>
+	<% if(user){ %>
+		<a href="/postsbyme"><button  style="float: left;">My Posts</button></a>
+		<a href="/"><button  style="float: left;">Home</button></a>
+
+		<a href="/logout"><button  style="float: right;top: 1px;background-color:red;">Logout</button></a>
+<br>
+		<h2>New Post</h2>
+		<form method="post">
+			<table>
+				<tr>
+					<td>Topic</td>
+					<td><input type="text" name="topic" value="<%=post[0].topic%>"></td>
+				</tr>
+				<tr>
+					<td>Description</td>
+					<td> <textarea name="descr" rows="8" cols="80"><%=post[0].descr%></textarea> </td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Post"></td>
+				</tr>
+			</table>
+		</form>
+		<% }
+		else{ %>
+
+			<a href="/login"><button  style="float: right;">Login</button></a>
+			<a href="/register"><button  style="float: right;">Get Started</button></a>
+			<%  }%>
+
+</body>
+</html>

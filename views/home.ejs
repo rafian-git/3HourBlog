@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Homepage</title>
+</head>
+<body>
+	<% if(user){ %>
+		<a href="/new"><button  style="float: left;">Create Post</button></a>
+		<a href="/postsbyme"><button  style="float: left;">My Posts</button></a>
+
+    <a href="/logout"><button  style="float: right;top: 1px;background-color:red;">Logout</button></a> <br>
+		<h2>Welcome Mr. <%=user[0].fName %> </h2>
+    <% }
+    else{ %>
+
+      <a href="/login"><button  style="float: right;">Login</button></a>
+      <a href="/register"><button  style="float: right;">Get Started</button></a>
+      <%  }%>
+	<h2  style="text-align:center;">3 Hour Blog</h2>
+
+<form  method="post">
+	<label>Search by</label>
+	<select   name="drop" >
+		<option value="author">Author</option>
+	<option value="topic">Post Topic</option>
+	<option value="descr">Post description</option>
+</select>
+	<input type="text"  name="search" placeholder="Search . . .">
+	<input type="submit" value="search">
+</form>
+
+			<%
+			var j = post.length-1 ;
+	for(var i = j; i > -1; i--){
+	%>
+	<hr>
+	<div>
+
+	<h1> <%=post[i].topic%> </h1>
+	<h3>author :  <%=post[i].fName%> </h3>
+	<p> <%=post[i].descr%>....... </p>
+	<a href="/post/<%=post[i].postId%>"><button  style="float: left;">Continue Reading</button></a>
+		<% var x=0;
+for(var k = 0; k < comment.length; k++){
+	if(post[i].postId == comment[k].pId)
+	x++;
+}
+%>
+<br>
+<br>
+<a href="/post/<%=post[i].postId%>"><%= x %> comments</a>
+	</div>
+	<hr>
+	<% }
+			%>
+			<hr>
+</body>
+</html>

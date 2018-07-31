@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Post</title>
+</head>
+<body>
+	<% if(user){ %>
+		<a href="/new"><button  style="float: left;">Create Post</button></a>
+		<a href="/"><button  style="float: left;">Home</button></a>
+
+    <a href="/logout"><button  style="float: right;top: 1px;background-color:red;">Logout</button></a>
+
+
+				 <div>
+				 <br>
+				 <h1> <%=post[0].topic%> </h1>
+				 <h3>author : <%=post[0].fName%></h3>
+				 <p> <%=post[0].descr%> </p>
+			 </div>
+				 <br><br>
+				  <div>
+				<hr>		<h3>Comments</h3> <hr>
+				 <%
+		 for(var i = 0; i < comment.length; i++){
+		 %>
+				 <h4 style="display : inline;"><%=comment[i].fName%> : </h4>
+				 <p style="display : inline;"><%=comment[i].comment%></p> <br> <br>
+				 <% }
+			 			%>
+						<form  method="post">
+							<input type="text" style="display:inline;" name="comment" placeholder="type your comment ....">
+							<input type="submit" style="color:blue;display:inline;" value="comment">
+						</form>
+					</div>
+    <% }
+    else{ %>
+
+      <a href="/login"><button  style="float: right;">Login</button></a>
+      <a href="/register"><button  style="float: right;">Get Started</button></a>
+
+
+					 <div>
+					 <br>
+					 <h1> <%=post[0].topic%> </h1>
+					 <h3>author : <%=post[0].fName%></h3>
+					 <p> <%=post[0].descr%> </p>
+				 </div>
+					 <br><br>
+					  <div>
+					<hr>		<h3>Comments</h3> <hr>
+					 <%if(comment.length == 0) {
+					 %> <p> No Comments Yet </p>
+		 <%		}
+else{
+		 for(var i = 0; i < comment.length; i++){
+			 %>
+					 <h4 style="display : inline;"><%=comment[i].fName%> : </h4>
+					 <p style="display : inline;"><%=comment[i].comment%></p> <br> <br>
+					 <% }
+				 			%>
+						</div>
+      <%  }
+			}%>
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Posts</title>
+</head>
+<body>
+	<% if(user){ %>
+		<a href="/new"><button  style="float: left;">Create Post</button></a>
+		<a href="/"><button  style="float: left;">Home</button></a>
+
+    <a href="/logout"><button  style="float: right;top: 1px;background-color:red;">Logout</button></a>
+
+		<br>
+<h2  style="color:red;">Are you sure to delete the following post ?</h2>
+<div>
+
+<br>
+<h1> <%=post[0].topic%> </h1>
+<p> <%=post[0].descr%> </p>
+</div>
+<form  method="post">
+	<input type="submit" style="color:red;" value="Delete">
+</form>
+<a href="/postsbyme" ><button>back to my Posts</button></a>
+    <% }
+    else{ %>
+
+      <a href="/login"><button  style="float: right;">Login</button></a>
+      <a href="/register"><button  style="float: right;">Get Started</button></a>
+      <%  }%>
+
+</body>
+</html>
