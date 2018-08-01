@@ -19,8 +19,10 @@ router.get('/', function(req, res){
 
 router.post('/', function(req, res){
 	homeModel.search( req.body.drop,req.body.search,function(result){
-		res.render('home',{user : req.session.user,post : result});
- });
+		homeModel.allComment(function(comment){
+		res.render('home',{user : req.session.user,post : result,comment : comment});
+ 		});
+	});
 });
 
 router.get('/new', function(req, res){
